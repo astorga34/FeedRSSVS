@@ -47,6 +47,30 @@
   <ItemGroup>
     <Compile Include="Clases\entry.cs" />
     <Compile Include="Clases\FeedRSS.cs" />
+    <Compile Include="Controles\AgregarRSS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\AgregarRSS.Designer.cs">
+      <DependentUpon>AgregarRSS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\BuscarEnlaces.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\BuscarEnlaces.Designer.cs">
+      <DependentUpon>BuscarEnlaces.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Principal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\RSS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controles\RSS.Designer.cs">
+      <DependentUpon>RSS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +79,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controles\AgregarRSS.resx">
+      <DependentUpon>AgregarRSS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\BuscarEnlaces.resx">
+      <DependentUpon>BuscarEnlaces.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controles\RSS.resx">
+      <DependentUpon>RSS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,6 +115,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Imagenes\feed.ico" />
+    <Content Include="Imagenes\feed2.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
