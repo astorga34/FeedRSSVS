@@ -32,5 +32,21 @@ namespace RSSFeed.Controles
             form.panel1.Controls.Clear();
             form.panel1.Controls.Add(control);
         }
+
+        private void btn_recientes_Click(object sender, EventArgs e)
+        {
+            var control = new Recientes();
+            Form1 form = (Form1)Application.OpenForms["Form1"];
+            form.panel1.Controls.Clear();
+            form.panel1.Controls.Add(control);
+        }
+
+        private void btn_configuracion_Click(object sender, EventArgs e)
+        {
+            var control = new Configuracion();
+            Form1 form = (Form1)Application.OpenForms["Form1"];
+            form.panel1.Controls.Clear();
+            form.panel1.Controls.Add(control);
+        }
     }
 }

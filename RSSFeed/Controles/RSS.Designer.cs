@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RSS));
             this.label1 = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.Link = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -35,7 +37,9 @@
             this.btn_agregar = new System.Windows.Forms.Button();
             this.btn_modificar = new System.Windows.Forms.Button();
             this.btn_regresar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_eliminar = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -76,48 +80,66 @@
             // 
             // btn_agregar
             // 
-            this.btn_agregar.Location = new System.Drawing.Point(816, 71);
+            this.btn_agregar.ImageKey = "addicon.png";
+            this.btn_agregar.ImageList = this.imageList1;
+            this.btn_agregar.Location = new System.Drawing.Point(911, 72);
             this.btn_agregar.Name = "btn_agregar";
-            this.btn_agregar.Size = new System.Drawing.Size(104, 97);
+            this.btn_agregar.Size = new System.Drawing.Size(70, 70);
             this.btn_agregar.TabIndex = 11;
-            this.btn_agregar.Text = "Agregar";
+            this.toolTip1.SetToolTip(this.btn_agregar, "Agregar nuevo RSS");
             this.btn_agregar.UseVisualStyleBackColor = true;
             this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);
             // 
             // btn_modificar
             // 
-            this.btn_modificar.Location = new System.Drawing.Point(926, 71);
+            this.btn_modificar.ImageKey = "Pencil2.png";
+            this.btn_modificar.ImageList = this.imageList1;
+            this.btn_modificar.Location = new System.Drawing.Point(1000, 72);
             this.btn_modificar.Name = "btn_modificar";
-            this.btn_modificar.Size = new System.Drawing.Size(104, 97);
+            this.btn_modificar.Size = new System.Drawing.Size(70, 70);
             this.btn_modificar.TabIndex = 12;
-            this.btn_modificar.Text = "Modificar";
+            this.toolTip1.SetToolTip(this.btn_modificar, "Editar un RSS");
             this.btn_modificar.UseVisualStyleBackColor = true;
             this.btn_modificar.Click += new System.EventHandler(this.btn_modificar_Click);
             // 
             // btn_regresar
             // 
-            this.btn_regresar.Location = new System.Drawing.Point(1146, 71);
+            this.btn_regresar.ImageKey = "Redoicon.png";
+            this.btn_regresar.ImageList = this.imageList1;
+            this.btn_regresar.Location = new System.Drawing.Point(1178, 72);
             this.btn_regresar.Name = "btn_regresar";
-            this.btn_regresar.Size = new System.Drawing.Size(104, 97);
+            this.btn_regresar.Size = new System.Drawing.Size(70, 70);
             this.btn_regresar.TabIndex = 13;
-            this.btn_regresar.Text = "Regresar";
+            this.toolTip1.SetToolTip(this.btn_regresar, "Regresar al menu anterior");
             this.btn_regresar.UseVisualStyleBackColor = true;
             this.btn_regresar.Click += new System.EventHandler(this.btn_regresar_Click);
             // 
-            // button1
+            // btn_eliminar
             // 
-            this.button1.Location = new System.Drawing.Point(1036, 71);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 97);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Eliminar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_eliminar.ImageKey = "delete.png";
+            this.btn_eliminar.ImageList = this.imageList1;
+            this.btn_eliminar.Location = new System.Drawing.Point(1089, 72);
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.Size = new System.Drawing.Size(70, 70);
+            this.btn_eliminar.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.btn_eliminar, "Eliminar RSS");
+            this.btn_eliminar.UseVisualStyleBackColor = true;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "addicon.png");
+            this.imageList1.Images.SetKeyName(1, "delete.png");
+            this.imageList1.Images.SetKeyName(2, "Pencil2.png");
+            this.imageList1.Images.SetKeyName(3, "returnicon.png");
+            this.imageList1.Images.SetKeyName(4, "Redoicon.png");
             // 
             // RSS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_eliminar);
             this.Controls.Add(this.btn_regresar);
             this.Controls.Add(this.btn_modificar);
             this.Controls.Add(this.btn_agregar);
@@ -139,6 +161,8 @@
         private System.Windows.Forms.Button btn_agregar;
         private System.Windows.Forms.Button btn_modificar;
         private System.Windows.Forms.Button btn_regresar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_eliminar;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

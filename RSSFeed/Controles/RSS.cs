@@ -27,7 +27,7 @@ namespace RSSFeed.Controles
 
         private void btn_agregar_Click(object sender, EventArgs e)
         {
-            var control = new AgregarRSS();
+            var control = new AgregarRSS(-1);
             Form1 form = (Form1)Application.OpenForms["Form1"];
             form.panel1.Controls.Clear();
             form.panel1.Controls.Add(control);
@@ -35,7 +35,7 @@ namespace RSSFeed.Controles
 
         private void btn_modificar_Click(object sender, EventArgs e)
         {
-            var control = new AgregarRSS();
+            var control = new AgregarRSS(-1);
             Form1 form = (Form1)Application.OpenForms["Form1"];
             form.panel1.Controls.Clear();
             form.panel1.Controls.Add(control);

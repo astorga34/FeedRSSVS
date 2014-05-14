@@ -40,6 +40,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolstripSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this.principalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +70,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.principalToolStripMenuItem,
             this.rSSToolStripMenuItem,
             this.buscarToolStripMenuItem,
             this.configuraciónToolStripMenuItem});
@@ -119,6 +121,12 @@
             this.toolstripSize.Size = new System.Drawing.Size(68, 20);
             this.toolstripSize.Text = "1024,600";
             // 
+            // principalToolStripMenuItem
+            // 
+            this.principalToolStripMenuItem.Name = "principalToolStripMenuItem";
+            this.principalToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.principalToolStripMenuItem.Text = "Principal";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -153,6 +161,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolstripSize;
+        private System.Windows.Forms.ToolStripMenuItem principalToolStripMenuItem;
     }
 }
 

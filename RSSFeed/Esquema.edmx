@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RSSModel.Store" Alias="Self" Provider="System.Data.SQLite" ProviderManifestToken="ISO8601" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="RSSModelStoreContainer">
+          <EntitySet Name="Enlaces" EntityType="RSSModel.Store.Enlaces" store:Type="Tables" />
+          <EntitySet Name="RSS" EntityType="RSSModel.Store.RSS" store:Type="Tables" />
+          <AssociationSet Name="FK_Enlaces_0_0" Association="RSSModel.Store.FK_Enlaces_0_0">
+            <End Role="RSS" EntitySet="RSS" />
+            <End Role="Enlaces" EntitySet="Enlaces" />
+          </AssociationSet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6035: The relationship 'FK_RSS_0_0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+      -->
+        <EntityType Name="Enlaces">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Categorias" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="link" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="RSS" Type="integer" Nullable="false" />
+          <Property Name="NotasAdicionales" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="RSS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="integer" Nullable="false" />
+          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="link" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="Palabras" Type="varchar" Nullable="false" MaxLength="1000" />
+          <Property Name="operador" Type="varchar" Nullable="false" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK_Enlaces_0_0">
+          <End Role="RSS" Type="RSSModel.Store.RSS" Multiplicity="1" />
+          <End Role="Enlaces" Type="RSSModel.Store.Enlaces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RSS">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Enlaces">
+              <PropertyRef Name="RSS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RSSModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RSSEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Enlaces" EntityType="RSSModel.Enlaces" />
+          <EntitySet Name="RSS" EntityType="RSSModel.RSS" />
+          <AssociationSet Name="FK_Enlaces_0_0" Association="RSSModel.FK_Enlaces_0_0">
+            <End Role="RSS" EntitySet="RSS" />
+            <End Role="Enlaces" EntitySet="Enlaces" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Enlaces">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Categorias" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="link" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="NotasAdicionales" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Type="Int64" Name="RSS" Nullable="false" />
+          <NavigationProperty Name="RSS1" Relationship="RSSModel.FK_Enlaces_0_0" FromRole="Enlaces" ToRole="RSS" />
+        </EntityType>
+        <EntityType Name="RSS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="link" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="Palabras" Type="String" Nullable="false" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="operador" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Enlaces" Relationship="RSSModel.FK_Enlaces_0_0" FromRole="RSS" ToRole="Enlaces" />
+        </EntityType>
+        <Association Name="FK_Enlaces_0_0">
+          <End Type="RSSModel.RSS" Role="RSS" Multiplicity="1" />
+          <End Type="RSSModel.Enlaces" Role="Enlaces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RSS">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Enlaces">
+              <PropertyRef Name="RSS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RSSModelStoreContainer" CdmEntityContainer="RSSEntities">
+          <EntitySetMapping Name="Enlaces">
+            <EntityTypeMapping TypeName="RSSModel.Enlaces">
+              <MappingFragment StoreEntitySet="Enlaces">
+                <ScalarProperty Name="RSS" ColumnName="RSS" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Categorias" ColumnName="Categorias" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="NotasAdicionales" ColumnName="NotasAdicionales" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RSS">
+            <EntityTypeMapping TypeName="RSSModel.RSS">
+              <MappingFragment StoreEntitySet="RSS">
+                <ScalarProperty Name="operador" ColumnName="operador" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="Palabras" ColumnName="Palabras" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

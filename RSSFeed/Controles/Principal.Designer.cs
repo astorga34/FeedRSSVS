@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.label1 = new System.Windows.Forms.Label();
             this.btn_rss = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btn_recientes = new System.Windows.Forms.Button();
             this.btn_enlaces = new System.Windows.Forms.Button();
             this.btn_configuracion = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -48,41 +52,60 @@
             // 
             // btn_rss
             // 
-            this.btn_rss.Location = new System.Drawing.Point(417, 168);
+            this.btn_rss.ImageKey = "RSS.png";
+            this.btn_rss.ImageList = this.imageList1;
+            this.btn_rss.Location = new System.Drawing.Point(440, 168);
             this.btn_rss.Name = "btn_rss";
-            this.btn_rss.Size = new System.Drawing.Size(104, 97);
+            this.btn_rss.Size = new System.Drawing.Size(70, 70);
             this.btn_rss.TabIndex = 1;
-            this.btn_rss.Text = "Ver RSSs";
+            this.toolTip1.SetToolTip(this.btn_rss, "Ir a catalogo de RSS");
             this.btn_rss.UseVisualStyleBackColor = true;
             this.btn_rss.Click += new System.EventHandler(this.btn_rss_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "RSS.png");
+            this.imageList1.Images.SetKeyName(1, "linkreciente.png");
+            this.imageList1.Images.SetKeyName(2, "search.png");
+            this.imageList1.Images.SetKeyName(3, "engine.png");
+            // 
             // btn_recientes
             // 
-            this.btn_recientes.Location = new System.Drawing.Point(538, 168);
+            this.btn_recientes.ImageKey = "linkreciente.png";
+            this.btn_recientes.ImageList = this.imageList1;
+            this.btn_recientes.Location = new System.Drawing.Point(546, 168);
             this.btn_recientes.Name = "btn_recientes";
-            this.btn_recientes.Size = new System.Drawing.Size(104, 97);
+            this.btn_recientes.Size = new System.Drawing.Size(70, 70);
             this.btn_recientes.TabIndex = 2;
-            this.btn_recientes.Text = "Ver enlaces recientes";
+            this.toolTip1.SetToolTip(this.btn_recientes, "Ver enlaces recientes");
             this.btn_recientes.UseVisualStyleBackColor = true;
+            this.btn_recientes.Click += new System.EventHandler(this.btn_recientes_Click);
             // 
             // btn_enlaces
             // 
-            this.btn_enlaces.Location = new System.Drawing.Point(659, 168);
+            this.btn_enlaces.ImageKey = "search.png";
+            this.btn_enlaces.ImageList = this.imageList1;
+            this.btn_enlaces.Location = new System.Drawing.Point(652, 168);
             this.btn_enlaces.Name = "btn_enlaces";
-            this.btn_enlaces.Size = new System.Drawing.Size(104, 97);
+            this.btn_enlaces.Size = new System.Drawing.Size(70, 70);
             this.btn_enlaces.TabIndex = 3;
-            this.btn_enlaces.Text = "Buscar Enlaces";
+            this.toolTip1.SetToolTip(this.btn_enlaces, "Buscar enlaces");
             this.btn_enlaces.UseVisualStyleBackColor = true;
             this.btn_enlaces.Click += new System.EventHandler(this.btn_enlaces_Click);
             // 
             // btn_configuracion
             // 
-            this.btn_configuracion.Location = new System.Drawing.Point(780, 168);
+            this.btn_configuracion.ImageKey = "engine.png";
+            this.btn_configuracion.ImageList = this.imageList1;
+            this.btn_configuracion.Location = new System.Drawing.Point(758, 168);
             this.btn_configuracion.Name = "btn_configuracion";
-            this.btn_configuracion.Size = new System.Drawing.Size(104, 97);
+            this.btn_configuracion.Size = new System.Drawing.Size(70, 70);
             this.btn_configuracion.TabIndex = 4;
-            this.btn_configuracion.Text = "Configuración";
+            this.toolTip1.SetToolTip(this.btn_configuracion, "Ir a Configuración");
             this.btn_configuracion.UseVisualStyleBackColor = true;
+            this.btn_configuracion.Click += new System.EventHandler(this.btn_configuracion_Click);
             // 
             // Principal
             // 
@@ -107,5 +130,7 @@
         private System.Windows.Forms.Button btn_recientes;
         private System.Windows.Forms.Button btn_enlaces;
         private System.Windows.Forms.Button btn_configuracion;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
