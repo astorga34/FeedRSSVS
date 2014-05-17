@@ -19,11 +19,11 @@ namespace RSSFeed
             this.Enlaces = new HashSet<Enlaces>();
         }
     
-        public long id { get; set; }
-        public string nombre { get; set; }
-        public string link { get; set; }
+        public int ID { get; set; }
+        public string Nombre { get; set; }
+        public string Link { get; set; }
         public string Palabras { get; set; }
-        public string operador { get; set; }
+        public bool Operador { get; set; }
     
         public virtual ICollection<Enlaces> Enlaces { get; set; }
     }

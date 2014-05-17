@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace RSSFeed.Controles
 {
@@ -15,6 +16,12 @@ namespace RSSFeed.Controles
         public RSS()
         {
             InitializeComponent();
+        }
+
+        private void RSS_Load(object sender, EventArgs e)
+        {
+            Thread hilo1 = new Thread(new ThreadStart(cargar_datos));
+            hilo1.Start();
         }
 
         private void btn_regresar_Click(object sender, EventArgs e)
@@ -39,6 +46,21 @@ namespace RSSFeed.Controles
             Form1 form = (Form1)Application.OpenForms["Form1"];
             form.panel1.Controls.Clear();
             form.panel1.Controls.Add(control);
+        }
+
+        public void cargar_datos()
+        {
+            var context = new DBEntities1();
+            var objs = (from rss in context.RSS select rss);
+            foreach (var obj in objs)
+            {
+                ListViewItem ax = new ListViewItem();
+                ax.Text = obj.Nombre.Trim();
+                ax.SubItems.Add(obj.Link.Trim());
+                ax.SubItems.Add(obj.Palabras.Trim());
+                listView1.Items.Add(ax);
+            }
+            box_loader.Visible = false;
         }
     }
 }

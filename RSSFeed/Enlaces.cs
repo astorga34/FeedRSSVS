@@ -14,12 +14,12 @@ namespace RSSFeed
     
     public partial class Enlaces
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Descripcion { get; set; }
-        public string Categorias { get; set; }
-        public string link { get; set; }
+        public string Categoria { get; set; }
+        public string Link { get; set; }
         public string NotasAdicionales { get; set; }
-        public long RSS { get; set; }
+        public int RSS { get; set; }
     
         public virtual RSS RSS1 { get; set; }
     }

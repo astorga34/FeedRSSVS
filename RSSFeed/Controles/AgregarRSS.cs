@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RSSFeed.Clases;
+using System.Threading;
 
 namespace RSSFeed.Controles
 {
@@ -27,20 +27,32 @@ namespace RSSFeed.Controles
             var nombre = validar_nombre();
             if (rss && nombre)
             {
-                var cs = new List<string>();
-                foreach (var ds in cb_busqueda.Items)
+                try
                 {
-                    cs.Add(ds.ToString());
+                    var cs = new List<string>();
+                    foreach (var ds in cb_busqueda.Items)
+                    {
+                        cs.Add(ds.ToString());
+                    }
+                    var context = new DBEntities1();
+                    var obj = new RSSFeed.RSS();
+
+                    //obj.ID = context.RSS.Max(f => f.ID) + 1;
+                    obj.Link = txt_rss.Text.Trim();
+                    obj.Nombre = txt_nombre.Text.Trim();
+                    obj.Operador = (cb_logico.SelectedItem.ToString().Trim() == "AND" ? true : false);
+                    obj.Palabras = string.Join(",", cs);
+                    context.RSS.Add(obj);
+                    context.SaveChanges();
+                    MessageBox.Show("El registro se guardo de manera exitosamente.", "Guardado exitoso.");
+                    context.Dispose();
+                    btn_regresar_Click(null,null);
+                }
+                catch (Exception f)
+                {
+                    MessageBox.Show("Ocurrio un error.\n" + f.Message,"Error en la aplicación");
                 }
 
-                var data = new RSSEntities();
-                var obj = data.RSS.Create();
-                obj.link = txt_rss.Text.Trim();
-                obj.nombre = txt_nombre.Text.Trim();
-                obj.operador = (cb_logico.SelectedItem.ToString().Trim() == "AND" ? "a" : "o");
-                obj.Palabras = string.Join(",", cs);
-                data.RSS.Add(obj);
-                data.SaveChanges();
             }
             else 
             {
@@ -67,7 +79,6 @@ namespace RSSFeed.Controles
             cb_busqueda.Items.Clear();
             cb_busqueda.Text = "";
         }
-
 
         //Metodos para validar
         public bool validar_rss()
