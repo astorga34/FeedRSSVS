@@ -115,6 +115,7 @@
             this.btn_eliminar.TabIndex = 14;
             this.toolTip1.SetToolTip(this.btn_eliminar, "Eliminar RSS");
             this.btn_eliminar.UseVisualStyleBackColor = true;
+            this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
             // 
             // listView1
             // 

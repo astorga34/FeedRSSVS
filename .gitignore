@@ -164,6 +164,7 @@ UpgradeLog*.htm
 # SQL Server files
 *.mdf
 *.ldf
+*.sdf
 
 # SQL Lite files
 *.db

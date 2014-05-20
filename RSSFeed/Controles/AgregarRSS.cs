@@ -13,11 +13,48 @@ namespace RSSFeed.Controles
 {
     public partial class AgregarRSS : UserControl
     {
-        int id = -1;
+        private RSSFeed.RSS obj;
+        private int id = -1;
         public AgregarRSS(int id)
         {
             InitializeComponent();
             this.id = id;
+        }
+
+        private void AgregarRSS_Load(object sender, EventArgs e)
+        {
+            var context = new DBEntities1();
+            var query = (from rs in context.RSS where rs.ID == id select rs);
+            if (query.Count() != 0)
+            {
+                obj = query.ToList()[0];
+                txt_rss.Text = obj.Link.Trim();
+                txt_nombre.Text = obj.Nombre.Trim();
+                var palabras = obj.Palabras.Split(',');
+                cb_busqueda.Items.Clear();
+                foreach (var palabra in palabras)
+                {
+                    cb_busqueda.Items.Add(palabra);
+                }
+
+                if (obj.Operador)
+                {
+                    cb_logico.SelectedIndex = 0;
+                }
+                else
+                {
+                    cb_logico.SelectedIndex = 1;
+                }
+            }
+            else
+            {
+                txt_nombre.Text.Trim();
+                txt_rss.Text.Trim();
+                cb_busqueda.Items.Clear();
+            }
+
+
+            context.Dispose();
         }
 
         private void btn_guardar_Click(object sender, EventArgs e)
@@ -35,16 +72,34 @@ namespace RSSFeed.Controles
                         cs.Add(ds.ToString());
                     }
                     var context = new DBEntities1();
-                    var obj = new RSSFeed.RSS();
+                    
 
                     //obj.ID = context.RSS.Max(f => f.ID) + 1;
-                    obj.Link = txt_rss.Text.Trim();
-                    obj.Nombre = txt_nombre.Text.Trim();
-                    obj.Operador = (cb_logico.SelectedItem.ToString().Trim() == "AND" ? true : false);
-                    obj.Palabras = string.Join(",", cs);
-                    context.RSS.Add(obj);
-                    context.SaveChanges();
-                    MessageBox.Show("El registro se guardo de manera exitosamente.", "Guardado exitoso.");
+                    if(id != -1)
+                    {
+                        obj.Link = txt_rss.Text.Trim();
+                        obj.Nombre = txt_nombre.Text.Trim();
+                        obj.Operador = (cb_logico.SelectedItem.ToString().Trim() == "AND" ? true : false);
+                        obj.Palabras = string.Join(",", cs);
+                        context.RSS.Attach(obj);
+                        var entry = context.Entry(obj);
+                        entry.State = System.Data.Entity.EntityState.Modified;
+
+                        context.SaveChanges();
+                        MessageBox.Show("El registro se actualizó de manera exitosa.", "Guardado exitoso.");
+                    }
+                    else
+                    {
+                        RSSFeed.RSS obj2 = new RSSFeed.RSS();
+                        obj2.Link = txt_rss.Text.Trim();
+                        obj2.Nombre = txt_nombre.Text.Trim();
+                        obj2.Operador = (cb_logico.SelectedItem.ToString().Trim() == "AND" ? true : false);
+                        obj2.Palabras = string.Join(",", cs);
+                        context.RSS.Add(obj2);
+                        context.SaveChanges();
+                        MessageBox.Show("El registro se guardó de manera exitosa.", "Guardado exitoso.");
+                    }
+
                     context.Dispose();
                     btn_regresar_Click(null,null);
                 }

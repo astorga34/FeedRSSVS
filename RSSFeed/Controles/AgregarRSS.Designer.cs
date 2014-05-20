@@ -317,6 +317,7 @@
             this.Controls.Add(this.txt_rss);
             this.Name = "AgregarRSS";
             this.Size = new System.Drawing.Size(1300, 717);
+            this.Load += new System.EventHandler(this.AgregarRSS_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pic_url)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_clave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic_nombre)).EndInit();

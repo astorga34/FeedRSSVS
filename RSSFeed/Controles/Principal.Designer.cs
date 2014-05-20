@@ -37,6 +37,7 @@
             this.btn_enlaces = new System.Windows.Forms.Button();
             this.btn_configuracion = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btn_salir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -54,7 +55,7 @@
             // 
             this.btn_rss.ImageKey = "RSS.png";
             this.btn_rss.ImageList = this.imageList1;
-            this.btn_rss.Location = new System.Drawing.Point(440, 168);
+            this.btn_rss.Location = new System.Drawing.Point(405, 168);
             this.btn_rss.Name = "btn_rss";
             this.btn_rss.Size = new System.Drawing.Size(70, 70);
             this.btn_rss.TabIndex = 1;
@@ -70,12 +71,13 @@
             this.imageList1.Images.SetKeyName(1, "linkreciente.png");
             this.imageList1.Images.SetKeyName(2, "search.png");
             this.imageList1.Images.SetKeyName(3, "engine.png");
+            this.imageList1.Images.SetKeyName(4, "exiticon.png");
             // 
             // btn_recientes
             // 
             this.btn_recientes.ImageKey = "linkreciente.png";
             this.btn_recientes.ImageList = this.imageList1;
-            this.btn_recientes.Location = new System.Drawing.Point(546, 168);
+            this.btn_recientes.Location = new System.Drawing.Point(510, 168);
             this.btn_recientes.Name = "btn_recientes";
             this.btn_recientes.Size = new System.Drawing.Size(70, 70);
             this.btn_recientes.TabIndex = 2;
@@ -87,7 +89,7 @@
             // 
             this.btn_enlaces.ImageKey = "search.png";
             this.btn_enlaces.ImageList = this.imageList1;
-            this.btn_enlaces.Location = new System.Drawing.Point(652, 168);
+            this.btn_enlaces.Location = new System.Drawing.Point(615, 168);
             this.btn_enlaces.Name = "btn_enlaces";
             this.btn_enlaces.Size = new System.Drawing.Size(70, 70);
             this.btn_enlaces.TabIndex = 3;
@@ -99,7 +101,7 @@
             // 
             this.btn_configuracion.ImageKey = "engine.png";
             this.btn_configuracion.ImageList = this.imageList1;
-            this.btn_configuracion.Location = new System.Drawing.Point(758, 168);
+            this.btn_configuracion.Location = new System.Drawing.Point(720, 168);
             this.btn_configuracion.Name = "btn_configuracion";
             this.btn_configuracion.Size = new System.Drawing.Size(70, 70);
             this.btn_configuracion.TabIndex = 4;
@@ -107,10 +109,23 @@
             this.btn_configuracion.UseVisualStyleBackColor = true;
             this.btn_configuracion.Click += new System.EventHandler(this.btn_configuracion_Click);
             // 
+            // btn_salir
+            // 
+            this.btn_salir.ImageKey = "exiticon.png";
+            this.btn_salir.ImageList = this.imageList1;
+            this.btn_salir.Location = new System.Drawing.Point(825, 168);
+            this.btn_salir.Name = "btn_salir";
+            this.btn_salir.Size = new System.Drawing.Size(70, 70);
+            this.btn_salir.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.btn_salir, "Ir a Configuración");
+            this.btn_salir.UseVisualStyleBackColor = true;
+            this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.btn_configuracion);
             this.Controls.Add(this.btn_enlaces);
             this.Controls.Add(this.btn_recientes);
@@ -132,5 +147,6 @@
         private System.Windows.Forms.Button btn_configuracion;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btn_salir;
     }
 }
