@@ -20,6 +20,8 @@ namespace RSSFeed
         public string Link { get; set; }
         public string NotasAdicionales { get; set; }
         public int RSS { get; set; }
+        public bool Leido { get; set; }
+        public Nullable<System.DateTime> Fecha { get; set; }
     
         public virtual RSS RSS1 { get; set; }
     }

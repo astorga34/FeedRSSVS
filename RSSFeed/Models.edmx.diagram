@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="097f531717214946a0f2e5790fabe904" Name="Diagram1" >
-        <EntityTypeShape EntityType="DBModel.Enlaces" Width="1.5" PointX="9.3024266871169345" PointY="19.091832750985322" />
+        <EntityTypeShape EntityType="DBModel.Enlaces" Width="1.5" PointX="8.75" PointY="0.5" />
         <EntityTypeShape EntityType="DBModel.RSS" Width="1.5" PointX="3.875" PointY="0.625" />
         <AssociationConnector Association="DBModel.Enlaces_RSS" />
       </Diagram>

@@ -32,15 +32,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.principalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rSSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolstripSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.principalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -52,20 +52,14 @@
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "Haga clic aqui para maximizar la aplicación";
             this.notifyIcon1.Visible = true;
+            this.notifyIcon1.BalloonTipClicked += new System.EventHandler(this.notifyIcon1_BalloonTipClicked);
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // timer1
             // 
-            this.timer1.Interval = 15000;
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 20000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 28);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1282, 625);
-            this.panel1.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -79,6 +73,12 @@
             this.menuStrip1.Size = new System.Drawing.Size(1282, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // principalToolStripMenuItem
+            // 
+            this.principalToolStripMenuItem.Name = "principalToolStripMenuItem";
+            this.principalToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
+            this.principalToolStripMenuItem.Text = "Principal";
             // 
             // rSSToolStripMenuItem
             // 
@@ -121,11 +121,13 @@
             this.toolstripSize.Size = new System.Drawing.Size(68, 20);
             this.toolstripSize.Text = "1024,600";
             // 
-            // principalToolStripMenuItem
+            // panel1
             // 
-            this.principalToolStripMenuItem.Name = "principalToolStripMenuItem";
-            this.principalToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
-            this.principalToolStripMenuItem.Text = "Principal";
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 28);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1282, 625);
+            this.panel1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -153,7 +155,6 @@
 
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Timer timer1;
-        public System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem rSSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarToolStripMenuItem;
@@ -162,6 +163,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolstripSize;
         private System.Windows.Forms.ToolStripMenuItem principalToolStripMenuItem;
+        public System.Windows.Forms.Panel panel1;
     }
 }
 

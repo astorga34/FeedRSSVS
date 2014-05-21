@@ -23,6 +23,8 @@
           <Property Name="Link" Type="nvarchar" MaxLength="200" />
           <Property Name="NotasAdicionales" Type="nvarchar" MaxLength="100" />
           <Property Name="RSS" Type="int" Nullable="false" />
+          <Property Name="Leido" Type="bit" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
         </EntityType>
         <EntityType Name="RSS">
           <Key>
@@ -71,6 +73,8 @@
           <Property Type="String" Name="NotasAdicionales" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="RSS" Nullable="false" />
           <NavigationProperty Name="RSS1" Relationship="DBModel.Enlaces_RSS" FromRole="Enlaces" ToRole="RSS" />
+          <Property Type="Boolean" Name="Leido" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Precision="3" />
         </EntityType>
         <EntityType Name="RSS">
           <Key>
@@ -106,6 +110,8 @@
           <EntitySetMapping Name="Enlaces">
             <EntityTypeMapping TypeName="DBModel.Enlaces">
               <MappingFragment StoreEntitySet="Enlaces">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Leido" ColumnName="Leido" />
                 <ScalarProperty Name="RSS" ColumnName="RSS" />
                 <ScalarProperty Name="NotasAdicionales" ColumnName="NotasAdicionales" />
                 <ScalarProperty Name="Link" ColumnName="Link" />

@@ -49,12 +49,72 @@ namespace RSSFeed
             */
             this.Show();
             this.Focus();
+            this.WindowState = FormWindowState.Normal;
+            this.BringToFront();
+        }
+
+        private void notifyIcon1_BalloonTipClicked(object sender, EventArgs e)
+        {
+            //Codigo para mostrar la pantalla en donde estan las nuevas entradas.
+            this.Show();
+            this.Focus();
+            this.WindowState = FormWindowState.Normal;
+            this.BringToFront();
+            MessageBox.Show("Se hizo clic sobre el boton del baloontooltip.");
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             //Bloque de codigo que se va a estar ejecutando cada cierto tiempo.
-            
+            notifyIcon1.ShowBalloonTip(5000, "Nuevas entradas de rss", 
+                "Se han encontrado nuevas entradas de los rss que se tienen en la base de datos. Haga clic aqui para ir a verles.", 
+                ToolTipIcon.Info);
+            return;
+            try
+            {
+                //Se hace la consulta de los entries de los rss.
+                var db = new DBEntities1();
+                var objs = (from obj in db.RSS select obj);
+                foreach (var obj in objs)
+                {
+                    FeedRSS aux = new FeedRSS(obj.Link.Trim());
+                    List<entry> enlaces;
+                    if (obj.Palabras.Length != 0)
+                    {
+                        enlaces = aux.getFeed(obj.Palabras.Split(',').ToList(),obj.Operador);
+                    }
+                    else
+                    {
+                        enlaces = aux.getFeed();
+                    }
+
+                    //Se procede a guardar los nuevos rss
+                    foreach (var enlace in enlaces)
+                    {
+                        Enlaces nuevo = new Enlaces();
+                        nuevo.Link = enlace.Url;
+                        nuevo.Descripcion = enlace.Name;
+                        nuevo.Categoria = enlace.Type;
+                        nuevo.RSS = obj.ID;
+                        nuevo.Fecha = DateTime.Now;
+                        nuevo.Leido = false;
+                        db.Enlaces.Add(nuevo);
+                    }
+                    
+                }
+                if (db.Enlaces.Local.Count != 0)
+                {
+                    db.SaveChanges();
+                }
+                
+                db.Dispose();
+            }
+            catch (Exception f)
+            {
+                MessageBox.Show("Ocurrio un error.\n" + f.Message,"Error en la aplicación");
+            }
         }
+
+
     }
 }
