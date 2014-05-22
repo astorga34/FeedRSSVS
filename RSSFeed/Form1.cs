@@ -66,10 +66,6 @@ namespace RSSFeed
         private void timer1_Tick(object sender, EventArgs e)
         {
             //Bloque de codigo que se va a estar ejecutando cada cierto tiempo.
-            notifyIcon1.ShowBalloonTip(5000, "Nuevas entradas de rss", 
-                "Se han encontrado nuevas entradas de los rss que se tienen en la base de datos. Haga clic aqui para ir a verles.", 
-                ToolTipIcon.Info);
-            return;
             try
             {
                 //Se hace la consulta de los entries de los rss.
@@ -91,19 +87,27 @@ namespace RSSFeed
                     //Se procede a guardar los nuevos rss
                     foreach (var enlace in enlaces)
                     {
-                        Enlaces nuevo = new Enlaces();
-                        nuevo.Link = enlace.Url;
-                        nuevo.Descripcion = enlace.Name;
-                        nuevo.Categoria = enlace.Type;
-                        nuevo.RSS = obj.ID;
-                        nuevo.Fecha = DateTime.Now;
-                        nuevo.Leido = false;
-                        db.Enlaces.Add(nuevo);
+                        //Ver si ya existen un id
+                        var query = (from enl in db.Enlaces where enl.Link == enlace.Url && enl.RSS == obj.ID select enl);
+                        if (query.Count() == 0)
+                        {
+                            Enlaces nuevo = new Enlaces();
+                            nuevo.Link = enlace.Url;
+                            nuevo.Descripcion = enlace.Name;
+                            nuevo.Categoria = enlace.Type;
+                            nuevo.RSS = obj.ID;
+                            nuevo.Fecha = DateTime.Now;
+                            nuevo.Leido = false;
+                            db.Enlaces.Add(nuevo);
+                        }
                     }
                     
                 }
                 if (db.Enlaces.Local.Count != 0)
                 {
+                    notifyIcon1.ShowBalloonTip(15000, "Nuevas entradas de rss",
+                        string.Format("Se han encontrado {0} nuevas entradas de los rss que se tienen en la base de datos. Haga clic aqui para ir a verles.", db.Enlaces.Local.Count),
+                        ToolTipIcon.Info);
                     db.SaveChanges();
                 }
                 

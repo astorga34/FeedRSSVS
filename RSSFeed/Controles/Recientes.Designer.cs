@@ -36,6 +36,7 @@
             this.cb_rss = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btn_marcar = new System.Windows.Forms.Button();
             this.dtg_enlaces = new System.Windows.Forms.DataGridView();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Link = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,6 +76,7 @@
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "exiticon.png");
             this.imageList1.Images.SetKeyName(1, "Redoicon.png");
+            this.imageList1.Images.SetKeyName(2, "okicon.png");
             // 
             // cb_rss
             // 
@@ -95,6 +97,18 @@
             this.label2.Size = new System.Drawing.Size(62, 29);
             this.label2.TabIndex = 21;
             this.label2.Text = "RSS";
+            // 
+            // btn_marcar
+            // 
+            this.btn_marcar.ImageKey = "okicon.png";
+            this.btn_marcar.ImageList = this.imageList1;
+            this.btn_marcar.Location = new System.Drawing.Point(1176, 114);
+            this.btn_marcar.Name = "btn_marcar";
+            this.btn_marcar.Size = new System.Drawing.Size(70, 70);
+            this.btn_marcar.TabIndex = 24;
+            this.toolTip1.SetToolTip(this.btn_marcar, "Marcar como leidos las entradas del rss seleccionado");
+            this.btn_marcar.UseVisualStyleBackColor = true;
+            this.btn_marcar.Click += new System.EventHandler(this.btn_marcar_Click);
             // 
             // dtg_enlaces
             // 
@@ -157,6 +171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_marcar);
             this.Controls.Add(this.box_loader);
             this.Controls.Add(this.dtg_enlaces);
             this.Controls.Add(this.label2);
@@ -189,5 +204,6 @@
         private System.Windows.Forms.GroupBox box_loader;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btn_marcar;
     }
 }
