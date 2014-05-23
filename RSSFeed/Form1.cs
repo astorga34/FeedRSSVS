@@ -28,6 +28,11 @@ namespace RSSFeed
             this.panel1.Controls.Clear();
             this.panel1.Controls.Add(control);
             this.toolstripSize.Text = this.Size.Width + "x" + this.Size.Height;
+
+            var db = new DBEntities1();
+            var query2 = (from obj in db.Enlaces where obj.Leido == false select obj);
+            this.toolstrip_rss.Text = string.Format("{0} entrada(s) sin leer.", query2.Count());
+            db.Dispose();
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
@@ -111,14 +116,13 @@ namespace RSSFeed
                     notifyIcon1.ShowBalloonTip(20000, "Nuevas entradas de rss",
                         string.Format("Se han encontrado {0} nuevas entradas de los rss que se tienen en la base de datos. Haga clic aqui para ir a verles.", db.Enlaces.Local.Count),
                         ToolTipIcon.Info);
-                    toolstrip_rss.Text = string.Format("Se han encontrado {0} nuevas entradas de los rss.", db.Enlaces.Local.Count);
+                    
                 }
-                else
-                {
-                    toolstrip_rss.Text = string.Format("Ultimo intento de lectura de entradas de RSS hecha a las {0}.", 
-                        DateTime.Now.ToString("dd-MM-yyyy hh:mm"));
-                }
-                
+                var query2 = (from obj in db.Enlaces where obj.Leido ==false select obj);
+                this.toolstrip_rss.Text = string.Format("{0} entrada(s) sin leer.",query2.Count());
+                this.notifyIcon1.Text = string.Format("{0} entrada(s) sin leer.", query2.Count());
+                this.toolIntento.Text = string.Format("Ultimo intento de lectura de entradas de RSS hecha a las {0}.",
+                DateTime.Now.ToString("dd-MM-yyyy hh:mm"));            
                 db.Dispose();
             }
             catch (Exception f)

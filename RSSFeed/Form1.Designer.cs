@@ -40,9 +40,11 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolstripSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.toolstrip_rss = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolstrip_rss = new System.Windows.Forms.ToolStripStatusLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolIntento = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -106,7 +108,9 @@
             this.toolStripStatusLabel1,
             this.toolstripSize,
             this.toolStripStatusLabel2,
-            this.toolstrip_rss});
+            this.toolstrip_rss,
+            this.toolStripStatusLabel3,
+            this.toolIntento});
             this.statusStrip1.Location = new System.Drawing.Point(0, 628);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1282, 25);
@@ -115,8 +119,9 @@
             // 
             // toolStripStatusLabel1
             // 
+            this.toolStripStatusLabel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(126, 20);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(133, 20);
             this.toolStripStatusLabel1.Text = "Tamaño ventana: ";
             // 
             // toolstripSize
@@ -124,6 +129,19 @@
             this.toolstripSize.Name = "toolstripSize";
             this.toolstripSize.Size = new System.Drawing.Size(68, 20);
             this.toolstripSize.Text = "1024,600";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(39, 20);
+            this.toolStripStatusLabel2.Text = "RSS:";
+            // 
+            // toolstrip_rss
+            // 
+            this.toolstrip_rss.Name = "toolstrip_rss";
+            this.toolstrip_rss.Size = new System.Drawing.Size(121, 20);
+            this.toolstrip_rss.Text = "0 entradas si leer";
             // 
             // panel1
             // 
@@ -133,17 +151,18 @@
             this.panel1.Size = new System.Drawing.Size(1282, 625);
             this.panel1.TabIndex = 0;
             // 
-            // toolstrip_rss
+            // toolStripStatusLabel3
             // 
-            this.toolstrip_rss.Name = "toolstrip_rss";
-            this.toolstrip_rss.Size = new System.Drawing.Size(208, 20);
-            this.toolstrip_rss.Text = "No hay nuevas entradas de rss";
+            this.toolStripStatusLabel3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(116, 20);
+            this.toolStripStatusLabel3.Text = "Ultimo intento:";
             // 
-            // toolStripStatusLabel2
+            // toolIntento
             // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(52, 20);
-            this.toolStripStatusLabel2.Text = "Status:";
+            this.toolIntento.Name = "toolIntento";
+            this.toolIntento.Size = new System.Drawing.Size(108, 20);
+            this.toolIntento.Text = "00/00/00 00:00";
             // 
             // Form1
             // 
@@ -182,6 +201,8 @@
         public System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripStatusLabel toolstrip_rss;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel toolIntento;
     }
 }
 

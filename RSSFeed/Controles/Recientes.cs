@@ -79,7 +79,13 @@ namespace RSSFeed.Controles
                     }
                     db.SaveChanges();
                     db.Dispose();
-                    cb_rss.SelectedText = "";
+                    try
+                    {
+                        //Try-Catch para evitar la ventana emergente innecesaria.
+                        cb_rss.SelectedIndex = -1;
+                    }
+                    catch (Exception)
+                    {}
                     dtg_enlaces.Rows.Clear();
                 }
                 catch (Exception f)
