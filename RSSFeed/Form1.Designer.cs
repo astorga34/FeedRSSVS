@@ -41,6 +41,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolstripSize = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.toolstrip_rss = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -102,7 +103,8 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolstripSize});
+            this.toolstripSize,
+            this.toolstrip_rss});
             this.statusStrip1.Location = new System.Drawing.Point(0, 628);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1282, 25);
@@ -128,6 +130,12 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1282, 625);
             this.panel1.TabIndex = 0;
+            // 
+            // toolstrip_rss
+            // 
+            this.toolstrip_rss.Name = "toolstrip_rss";
+            this.toolstrip_rss.Size = new System.Drawing.Size(208, 20);
+            this.toolstrip_rss.Text = "No hay nuevas entradas de rss";
             // 
             // Form1
             // 
@@ -164,6 +172,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolstripSize;
         private System.Windows.Forms.ToolStripMenuItem principalToolStripMenuItem;
         public System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolstrip_rss;
     }
 }
 

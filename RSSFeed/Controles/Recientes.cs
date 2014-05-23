@@ -59,25 +59,35 @@ namespace RSSFeed.Controles
         private void btn_marcar_Click(object sender, EventArgs e)
         {
             //Codigo para cambiar el estado de Leido de las entradas cargadas en pantalla
-            try
+            if (MessageBox.Show("¿Esta seguro que desea marcar como leidos los enlaces mostrados en el grid?", "Solicitando respuesta", MessageBoxButtons.YesNo) ==
+                DialogResult.Yes)
             {
-                var db = new DBEntities1();
-                foreach (var enlace in lista2)
+                try
                 {
-                    enlace.Leido = true;
-                    db.Enlaces.Attach(enlace);
-                    var entry = db.Entry(enlace);
-                    entry.State = System.Data.Entity.EntityState.Modified;
+                    var db = new DBEntities1();
+                    foreach (var enlace in lista2)
+                    {
+                        var query = (from enl in db.Enlaces where enl.Id == enlace.Id select enl);
+                        if (query.Count() != 0)
+                        {
+                            var nuevo = query.ToList().ElementAt(0);
+                            nuevo.Leido = true;
+                            db.Enlaces.Attach(nuevo);
+                            var entry = db.Entry(nuevo);
+                            entry.State = System.Data.Entity.EntityState.Modified;
+                        }
+                    }
+                    db.SaveChanges();
+                    db.Dispose();
+                    cb_rss.SelectedText = "";
+                    dtg_enlaces.Rows.Clear();
                 }
-                db.SaveChanges();
-                db.Dispose();
-                cb_rss.SelectedIndex = -1;
-                dtg_enlaces.Rows.Clear();
+                catch (Exception f)
+                {
+                    MessageBox.Show("Ocurrio un error.\n" + f.Message, "Error en la aplicación");
+                }
             }
-            catch (Exception f)
-            {
-                MessageBox.Show("Ocurrio un error.\n" + f.Message,"Error en la aplicación");
-            }
+
         }
 
         public void cargar_datos()

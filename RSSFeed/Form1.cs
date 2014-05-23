@@ -39,7 +39,6 @@ namespace RSSFeed
             {
                 this.Hide();
             }
-            this.toolstripSize.Text = this.Size.Width + "x" + this.Size.Height;
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -60,7 +59,10 @@ namespace RSSFeed
             this.Focus();
             this.WindowState = FormWindowState.Normal;
             this.BringToFront();
-            MessageBox.Show("Se hizo clic sobre el boton del baloontooltip.");
+            Form1 form = (Form1)Application.OpenForms["Form1"];
+            form.panel1.Controls.Clear();
+            Recientes control = new Recientes();
+            form.panel1.Controls.Add(control);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -105,10 +107,16 @@ namespace RSSFeed
                 }
                 if (db.Enlaces.Local.Count != 0)
                 {
-                    notifyIcon1.ShowBalloonTip(15000, "Nuevas entradas de rss",
+                    db.SaveChanges();
+                    notifyIcon1.ShowBalloonTip(20000, "Nuevas entradas de rss",
                         string.Format("Se han encontrado {0} nuevas entradas de los rss que se tienen en la base de datos. Haga clic aqui para ir a verles.", db.Enlaces.Local.Count),
                         ToolTipIcon.Info);
-                    db.SaveChanges();
+                    toolstrip_rss.Text = string.Format("Se han encontrado {0} nuevas entradas de los rss que se tienen en la base de datos. Haga clic aqui para ir a verles.", db.Enlaces.Local.Count);
+                }
+                else
+                {
+                    toolstrip_rss.Text = string.Format("Ultimo intento de lectura de entradas de RSS hecha a las {0}.", 
+                        DateTime.Now.ToString("dd-MM-yyyy hh:mm"));
                 }
                 
                 db.Dispose();
