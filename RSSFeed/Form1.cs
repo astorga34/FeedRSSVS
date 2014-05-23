@@ -111,7 +111,7 @@ namespace RSSFeed
                     notifyIcon1.ShowBalloonTip(20000, "Nuevas entradas de rss",
                         string.Format("Se han encontrado {0} nuevas entradas de los rss que se tienen en la base de datos. Haga clic aqui para ir a verles.", db.Enlaces.Local.Count),
                         ToolTipIcon.Info);
-                    toolstrip_rss.Text = string.Format("Se han encontrado {0} nuevas entradas de los rss que se tienen en la base de datos. Haga clic aqui para ir a verles.", db.Enlaces.Local.Count);
+                    toolstrip_rss.Text = string.Format("Se han encontrado {0} nuevas entradas de los rss.", db.Enlaces.Local.Count);
                 }
                 else
                 {
