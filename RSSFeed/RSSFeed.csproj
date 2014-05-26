@@ -61,6 +61,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
@@ -83,6 +84,7 @@
     <Compile Include="Clases\entry.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Clases\Extras.cs" />
     <Compile Include="Clases\FeedRSS.cs">
       <SubType>Code</SubType>
     </Compile>

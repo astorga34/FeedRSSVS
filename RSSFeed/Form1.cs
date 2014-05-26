@@ -24,6 +24,7 @@ namespace RSSFeed
         {
             //this.WindowState = FormWindowState.Minimized;
             //this.Hide();
+            //Extras.existe_db();
             var control = new Principal();
             this.panel1.Controls.Clear();
             this.panel1.Controls.Add(control);

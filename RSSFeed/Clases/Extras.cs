@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlServerCe;
+using System.Configuration;
 
 namespace RSSFeed.Clases
 {
@@ -15,13 +16,28 @@ namespace RSSFeed.Clases
             msj = null;
             try
             {
-                string connectionString = "DataSource=\"test.sdf\";";
-                SqlCeEngine en = new SqlCeEngine(connectionString);
-                if (!en.Verify())
+
+                if (!System.IO.File.Exists(System.IO.Directory.GetCurrentDirectory()+"\\DB.sdf"))
                 {
+                    string connectionString = ConfigurationManager.ConnectionStrings["RSSFeed.Properties.Settings.DBConnectionString"].ConnectionString;
+                    SqlCeEngine en = new SqlCeEngine(connectionString);
                     en.CreateDatabase();
+
+                    var conexion = new SqlCeConnection(connectionString);
+                    conexion.Open();
+                    var ruta = System.IO.Directory.GetCurrentDirectory() + "DBCreation.sql";
+                    var contenido = System.IO.File.ReadAllText(ruta);
+                    var comando = new SqlCeCommand(contenido, conexion);
+                    comando.ExecuteNonQuery();
+                    conexion.Close();
+                    en.Dispose();
+                    return true;
                 }
-                en.Dispose();
+                else
+                {
+                    return false;
+                }
+                
             }
             catch (Exception f)
             {
